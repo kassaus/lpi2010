@@ -8,7 +8,7 @@
 * 
 * vai inserir nova estrutura generica em cabeca.primeiro e inserir nos dados a palavra
 */
-void insereInicio(CABECA lista, void *dados ){
+void insereInicio(CABECA lista, void  *dados){
 
 	PGENERICA item, ptr;
 
