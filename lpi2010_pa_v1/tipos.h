@@ -1,5 +1,7 @@
 #define LISTAS 6
-#define TAMANHO_NOME_PESSOA 50
+#define MAX_PESSOA 50
+#define MAX_NUM_ID 13
+#define MAX_CONTACTO 40
 #define ORDEM_LISTA_ESPECTACULO 0
 #define ORDEM_LISTA_SALA 1
 #define ORDEM_LISTA_PESSOA 2
@@ -9,10 +11,25 @@
 
 
 //enumerado para definicao do horario da sessao
-typedef enum e_sessao { manha=1, tarde, noite} T_SESSAO; 
+typedef enum e_sessao { manha=1, tarde, noite} E_SESSAO; 
 
 //enumerado para definição do tipo de identificação
-typedef enum e_identificacao {bi=1, ci, passaporte} T_IDENT;
+typedef enum e_identificacao {bi=1, cc, passaporte} E_IDENT;
+
+//enumerado para definição do tipo de contactos
+typedef enum e_contacto {email = 1, telefone} E_CONTACTO;
+
+//estrutura identificação
+typedef struct identificacao{
+	E_IDENT tipo_identificacao;
+	char numero[MAX_NUM_ID];
+} T_IDENT;
+
+//estrutura contactos
+typedef struct contacto{
+	E_CONTACTO tipo_contacto;
+	char contacto[MAX_CONTACTO];
+} T_CONTACTO;
 
 //estrutura generica
 typedef struct s_generica {
@@ -55,6 +72,8 @@ typedef struct s_data {
 	int ano;
 } T_DATA;
 
+typedef T_DATA *P_DATA;
+
 
 //estrutura tipo de espectaculo
 typedef struct s_espectaculo {	
@@ -63,7 +82,7 @@ typedef struct s_espectaculo {
 	char *desc_espectaculo;		//apontador para a descricao do espectaculo
 	T_DATA data_inicial;		//data de inicio das exibicoes
 	T_DATA data_final;			//data final das exibicoes
-	T_SESSAO sessao;			//enumerado manha=1, tarde, noite
+	E_SESSAO sessao;			//enumerado manha=1, tarde, noite
 } T_ESPECTACULO;
 typedef T_ESPECTACULO *P_ESPECTACULO;
 
@@ -112,9 +131,9 @@ typedef T_RESERVA *P_RESERVA;
  */
 typedef struct pessoa{
 	int id_pessoa;			//id da pessoa
-	char *nome_pessoa;		//Apontador para o nome da pessoa
+	char nome_pessoa[MAX_PESSOA];		//Apontador para o nome da pessoa
 	T_IDENT identificacao; 	//Identificação do cliente
-	//T_CONTACTO contacto;	//Tipo de contacto
+	T_CONTACTO contacto;	//COntacto do espectador	
 	} T_PESSOA;
 typedef T_PESSOA *P_PESSOA;
 
@@ -141,4 +160,4 @@ float leFloat(char* txt);
 unsigned leUnsigned(char* txt);
 unsigned short leUnsignedShort(char* txt);
 unsigned leEnum(char* txt, unsigned min, unsigned max);
-void insereInicio(PCABECA lista, void *dados );
+void insereInicio(CABECA lista, void  *dados);
