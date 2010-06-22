@@ -3,11 +3,9 @@
 #include "tipos.h"
 #include <stdlib.h>
 
-/* insereInicio
-* recebe ponteiro para a lista crrespondente e ponteiro para a cabeca da lista generica correspondente a letra
-* 
-* vai inserir nova estrutura generica em cabeca.primeiro e inserir nos dados a palavra
-*/
+/* insereInicio recebe ponteiro para a lista correspondente,
+ *vai inserir nova estrutura generica em cabeca.primeiro
+ */
 void insereInicio(CABECA lista, void  *dados){
 
 	PGENERICA item, ptr;
@@ -33,3 +31,17 @@ void insereInicio(CABECA lista, void  *dados){
 		item->dados = dados;
 	}
 }
+
+//void idEspectador(CABECA lista_espectador){
+//	P_PESSOA tmp;
+//	lista_espectador.primeiro->dados = tmp;
+//
+//	tmp = lista_espectador.primeiro->dados;
+//	if(lista_espectador.primeiro == NULL){
+//		lista_espectador.id_espectador = 1;
+//	} else {
+//
+//		
+//	}
+//
+//}

@@ -8,20 +8,24 @@
 #include "tipos.h"
 
 
-
-
-
 int main(int argc, char* argv[])
 {
+	int i;
 	CABECA array_listas[LISTAS];
 
-	//inicializacao do array de estruturas cabeca
+	/*inicializacao do array de estruturas cabeca
+	 */
 	memset(array_listas, 0, sizeof(CABECA) * LISTAS);
 
+	/* inicialização do ponteiro para o primeiro elemento da lista e
+	 * numero do id do espectador
+	 */
+	for (i=0; i<LISTAS; i++){
+		array_listas[i].id_espectador = 0;
+		array_listas[i].primeiro = NULL;
+	}	
 
-
-	menu();
-
+	menu(array_listas);
 
 	system("pause");
 	return 0;

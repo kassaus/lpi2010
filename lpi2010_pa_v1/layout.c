@@ -8,7 +8,7 @@
 #define OPCOES_MENU 5
 
 
-void menu(void){
+void menu(CABECA *array_listas){
 	char *item_menu[OPCOES_MENU] = {"Criar", "Remover", "Listar", "Pesquisa Geral", "Pesquisa Personalizada"};
 
 	char *sub_item_menu[NUMERO_ITEMS] = {"Salas", "Espetaculos", "Reservas", "Espectadores",
@@ -28,7 +28,7 @@ void menu(void){
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			fflush(stdin);
 			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu);
+			subMenu(escolha_menu, escolha_sub_menu, array_listas);
 			fflush(stdin);
 			break;
 
@@ -38,7 +38,7 @@ void menu(void){
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu);
+			subMenu(escolha_menu, escolha_sub_menu, array_listas);
 			break;
 
 		case '3':
@@ -47,7 +47,7 @@ void menu(void){
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu);
+			subMenu(escolha_menu, escolha_sub_menu, array_listas);
 			break;
 
 		case '4':
@@ -56,7 +56,7 @@ void menu(void){
 			imprimeMenu(sub_item_menu,4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu);
+			subMenu(escolha_menu, escolha_sub_menu, array_listas);
 			break;
 
 		case '5':
@@ -65,7 +65,7 @@ void menu(void){
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu);
+			subMenu(escolha_menu, escolha_sub_menu, array_listas);
 			break;
 		case '6':
 			exit(1);
@@ -77,7 +77,7 @@ void menu(void){
 	}
 }
 
-void subMenu(int escolha_menu, int escolha_sub_menu){		
+void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){		
 		switch(escolha_sub_menu)
 		{
 		case '1':
@@ -89,10 +89,10 @@ void subMenu(int escolha_menu, int escolha_sub_menu){
 		case '3':			
 			break;
 		case '4':
-			leEspectador();
+			leEspectador(&array_listas[ORDEM_LISTA_PESSOA]);
 			break;
 		case '5':
-			menu();
+			menu(array_listas);
 			break;
 
 		}

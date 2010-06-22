@@ -43,9 +43,10 @@ typedef GENERICA *PGENERICA;
  * Exibição[4],Ocupação[5].
  */
 typedef struct s_cabeca {
+	int id_espectador;
 	PGENERICA primeiro;		//apontador para o primeiro da lista
 } CABECA;
-typedef CABECA *PCABECA;
+typedef CABECA *P_CABECA;
 
 //estrutura tipo de id
 typedef struct s_id {
@@ -152,9 +153,9 @@ typedef T_PESSOA *P_PESSOA;
  */
 void imprimeCabecalho(char *str);
 void imprimeMenu(char **vct_menu, int tamanho, int escolha);
-void subMenu(int escolha_menu, int escolha_sub_menu);
-void menu(void);
-void leEspectador();
+void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas);
+void menu(CABECA *array_listas);
+void leEspectador(CABECA *lista_espectador);
 void leString(char* str, char* txt,int tam);
 float leFloat(char* txt);
 unsigned leUnsigned(char* txt);
