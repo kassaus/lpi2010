@@ -1,19 +1,19 @@
 #include "tipos.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 
-void leEspectador(){
-
-	static unsigned short int num_espectador;	
-	P_PESSOA novo;
-	num_espectador++;
+void leEspectador(CABECA *lista_espectador){
+	P_PESSOA novo;	
 	novo = malloc (sizeof(T_PESSOA));
 	if(!novo){
 		printf("Lamentamos nao foi possivel criar o espectador.");
 	} else {
-		printf("Id Espectador -> %d\n", num_espectador);
+		lista_espectador->id_espectador++;
+		novo->id_pessoa = lista_espectador->id_espectador;
+		printf("Id Espectador -> %d\n", novo->id_pessoa);
 		leString(novo->nome_pessoa,"Nome: ", MAX_PESSOA);
 		novo->identificacao.tipo_identificacao = leEnum("bi-> 1, cc-> 2, passaporte-> 3\ntipo de Identificacao:",1, 3);
 		switch(novo->identificacao.tipo_identificacao)
