@@ -151,7 +151,8 @@ typedef T_PESSOA *P_PESSOA;
 /*
  *Declarações das funções
  */
-void imprimeCabecalho(char *str);
+void imprimeCabecalho(char *str, int numero_caracteres, char limite);
+void imprimeLimite(int numero_caracteres, char limite);
 void imprimeMenu(char **vct_menu, int tamanho, int escolha);
 void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas);
 void menu(CABECA *array_listas);

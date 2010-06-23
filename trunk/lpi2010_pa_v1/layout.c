@@ -16,7 +16,7 @@ void menu(CABECA *array_listas){
 	int escolha_menu, escolha_sub_menu;
 
 	for(;;){
-		imprimeCabecalho("\t       Cinemas Lusofona\n");
+		imprimeCabecalho("\t\t\t\tCinemas Lusofona\n", 80, '*');
 		imprimeMenu(item_menu, OPCOES_MENU, '1');		
 		rewind(stdin);
 		escolha_menu = getchar();
@@ -24,7 +24,7 @@ void menu(CABECA *array_listas){
 		{
 		case '1':
 			system("CLS");
-			imprimeCabecalho("\t\t   Criar\n");
+			imprimeCabecalho("\t\t\t\t    Criar\n", 80, '*');
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			fflush(stdin);
 			escolha_sub_menu = getchar();
@@ -34,7 +34,7 @@ void menu(CABECA *array_listas){
 
 		case '2':
 			system("CLS");
-			imprimeCabecalho("\t\t   Remover\n");
+			imprimeCabecalho("\t\t\t\t    Remover\n", 80, '*');
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
@@ -43,7 +43,7 @@ void menu(CABECA *array_listas){
 
 		case '3':
 			system("CLS");
-			imprimeCabecalho("\t\t   Listar\n");
+			imprimeCabecalho("\t\t\t\tListar\n", 80, '*');
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
@@ -52,7 +52,7 @@ void menu(CABECA *array_listas){
 
 		case '4':
 			system("CLS");
-			imprimeCabecalho("\tPesquisa Geral\n");
+			imprimeCabecalho("\t\t\t\tPesquisa Geral\n", 80, '*');
 			imprimeMenu(sub_item_menu,4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
@@ -61,7 +61,7 @@ void menu(CABECA *array_listas){
 
 		case '5':
 			system("CLS");
-			imprimeCabecalho("\tPesquisa Personalizada\n");
+			imprimeCabecalho("\t\t\t\tPesquisa Personalizada\n", 80, '*');
 			imprimeMenu(sub_item_menu, 4, escolha_menu);
 			rewind(stdin);
 			escolha_sub_menu = getchar();
@@ -116,14 +116,24 @@ void imprimeMenu(char **vct_menu, int tamanho, int escolha){
 }
 
 /*
-*Imprime estrutura do cabeçalho, recebe apontador para caractere.
-*/
-void imprimeCabecalho(char *str){
-	char cabecalho_tmp[100] = "\t\t**CINELUSO**\n\n";
+ *Imprime estrutura do cabeçalho, recebe apontador para caractere.
+ */
+void imprimeCabecalho(char *str, int numero_caracteres, char limite){
+	char cabecalho_tmp[100] = "\t\t\t\t**CINELUSO**\n\n";
 	strcat(cabecalho_tmp,str);
 	system("CLS");
-	printf("<----------------------------------------->\n");
+	imprimeLimite(numero_caracteres, limite);
 	printf(cabecalho_tmp);
-	printf("<----------------------------------------->\n");
+	imprimeLimite(numero_caracteres, limite);
+
+}
+
+/* imrime n caracteres passados por parametro
+ */
+void imprimeLimite(int numero_caracteres, char limite){
+	int i;
+	for(i = 0; i < numero_caracteres; i++){
+		printf("%c", limite);
+	}
 
 }
