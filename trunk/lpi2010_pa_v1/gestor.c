@@ -6,7 +6,7 @@
 /* insereInicio recebe ponteiro para a lista correspondente,
  *vai inserir nova estrutura generica em cabeca.primeiro
  */
-void insereInicio(CABECA lista, void  *dados){
+void insereInicio(CABECA *lista, void  *dados){
 
 	PGENERICA item, ptr;
 
@@ -16,14 +16,14 @@ void insereInicio(CABECA lista, void  *dados){
 		printf("Lamentamos nao foi possivel reservar memoria.");
 	} else {
 
-		if ( lista.primeiro == NULL){		//se a lista estiver vazia
-			lista.primeiro = item;
+		if ( lista->primeiro == NULL){		//se a lista estiver vazia
+			lista->primeiro = item;
 			item->seg = NULL;
 			item->ant = NULL;
 		}
 		else {							//se a lista tiver elementos
-			ptr = lista.primeiro;
-			lista.primeiro = item;
+			ptr = lista->primeiro;
+			lista->primeiro = item;
 			item->ant = NULL;
 			item->seg = ptr;
 			ptr->ant = item;

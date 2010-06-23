@@ -5,13 +5,13 @@
 
 
 
-void leEspectador(CABECA *lista_espectador){
+P_PESSOA leEspectador(CABECA *lista_espectador){
 	P_PESSOA novo;	
 	novo = malloc (sizeof(T_PESSOA));
 	if(!novo){
 		printf("Lamentamos nao foi possivel criar o espectador.");
 	} else {
-		lista_espectador->id_espectador++;
+		++lista_espectador->id_espectador;
 		novo->id_pessoa = lista_espectador->id_espectador;
 		printf("Id Espectador -> %d\n", novo->id_pessoa);
 		leString(novo->nome_pessoa,"Nome: ", MAX_PESSOA);
@@ -40,4 +40,5 @@ void leEspectador(CABECA *lista_espectador){
 			break;
 		}
 	}
+	return novo;
 }
