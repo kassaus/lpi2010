@@ -89,7 +89,7 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 		case '3':			
 			break;
 		case '4':
-			leEspectador(&array_listas[ORDEM_LISTA_PESSOA]);
+			insereInicio(&array_listas[ORDEM_LISTA_PESSOA], leEspectador(&array_listas[ORDEM_LISTA_PESSOA]));
 			break;
 		case '5':
 			menu(array_listas);
