@@ -4,12 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NUMERO_ITEMS 7
-#define OPCOES_MENU 5
+
 
 
 void menu(CABECA *array_listas){
-	char *item_menu[OPCOES_MENU] = {"Criar", "Remover", "Listar", "Pesquisa Geral", "Pesquisa Personalizada"};
+	char *item_menu[OPCOES_MENU] = {"Criar", "Remover", "Listar", "Pesquisas"};
 
 	char *sub_item_menu[NUMERO_ITEMS] = {"Salas", "Espetaculos", "Reservas", "Espectadores",
 		"Salas por Nome", "Espectaculos por Nome e Numero", "Espectaculos de Sala ou Sessao numa Data"};
@@ -60,14 +59,6 @@ void menu(CABECA *array_listas){
 			break;
 
 		case '5':
-			system("CLS");
-			imprimeCabecalho("\t\t\t\tPesquisa Personalizada\n", 80, '*');
-			imprimeMenu(sub_item_menu, 4, escolha_menu);
-			rewind(stdin);
-			escolha_sub_menu = getchar();
-			subMenu(escolha_menu, escolha_sub_menu, array_listas);
-			break;
-		case '6':
 			exit(1);
 			break;
 
@@ -84,14 +75,37 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 
 			break;
 		case '2':
+			/* Criar espectaculos
+			 */
+			if(escolha_menu == '1'){
 
+			}
+
+			/* Imprime Espectadores
+			 */
+			if(escolha_menu == '3'){
+			imprime(&array_listas[ORDEM_LISTA_PESSOA], imprimeEspectador);
+			}
+			system("PAUSE");
 			break;
-		case '3':			
+		case '3':
+			
 			break;
 		case '4':
+			/* menu pesquisa, sub-menu opção sair = 4
+			 */
+			if(escolha_menu == '4' && escolha_sub_menu == '4'){
+				menu(array_listas);
+			}
+			/* Ler espectador
+			 */
+			if(escolha_menu == '1'){
 			insereInicio(&array_listas[ORDEM_LISTA_PESSOA], leEspectador(&array_listas[ORDEM_LISTA_PESSOA]));
+			}			
 			break;
 		case '5':
+			/* opção sair volta ao menu
+			 */
 			menu(array_listas);
 			break;
 

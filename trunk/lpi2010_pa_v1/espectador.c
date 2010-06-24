@@ -4,7 +4,11 @@
 #include <stdlib.h>
 
 
-
+/* le um espectador 
+ * recebe ponteiro para a lista de espectadores
+ * solicita ao utilizador todos os dados necessarios ao preenchimento dos campos para um espectador
+ * retorna um ponteiro para o novo espectador.
+ */
 P_PESSOA leEspectador(CABECA *lista_espectador){
 	P_PESSOA novo;	
 	novo = malloc (sizeof(T_PESSOA));
@@ -43,10 +47,16 @@ P_PESSOA leEspectador(CABECA *lista_espectador){
 	return novo;
 }
 
+/* imprime espectador
+ * recebe um ponteiro para o espectador
+ */
 void imprimeEspectador(P_PESSOA espectador){
-	printf("%d\n", espectador->id_pessoa);
-	printf("%s\n", espectador->nome_pessoa);
-	printf("%s\n", espectador->identificacao);
-	printf("%s\n", espectador->contacto);
-	imprimeLimite(80,'-');
+	char *tipos_identificacao[] = {"bi", "cc", "passaporte"};
+	char *tipos_contactos[] = {"email", "telefone"};	
+
+	printf("Id-> %d\n", espectador->id_pessoa);
+	printf("Nome-> %s\n", espectador->nome_pessoa);
+	printf("%s-> %s\n", tipos_identificacao[espectador->identificacao.tipo_identificacao - 1], espectador->identificacao.numero);
+	printf("%s-> %s\n", tipos_contactos[espectador->contacto.tipo_contacto - 1], espectador->identificacao.numero);
+	imprimeLimite(80,'-');	
 }

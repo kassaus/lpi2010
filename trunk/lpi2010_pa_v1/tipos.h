@@ -1,3 +1,5 @@
+#define NUMERO_ITEMS 7
+#define OPCOES_MENU 4
 #define LISTAS 6
 #define MAX_PESSOA 50
 #define MAX_NUM_ID 13
