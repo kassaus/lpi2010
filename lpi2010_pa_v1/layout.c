@@ -69,48 +69,53 @@ void menu(CABECA *array_listas){
 }
 
 void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){		
-		switch(escolha_sub_menu)
-		{
-		case '1':
+	switch(escolha_sub_menu)
+	{
+	case '1':
 
-			break;
-		case '2':
-			/* Criar espectaculos
-			 */
-			if(escolha_menu == '1'){
-
-			}
-
-			/* Imprime Espectadores
-			 */
-			if(escolha_menu == '3'){
-			imprime(&array_listas[ORDEM_LISTA_PESSOA], imprimeEspectador);
-			}
-			system("PAUSE");
-			break;
-		case '3':
-			
-			break;
-		case '4':
-			/* menu pesquisa, sub-menu opção sair = 4
-			 */
-			if(escolha_menu == '4' && escolha_sub_menu == '4'){
-				menu(array_listas);
-			}
-			/* Ler espectador
-			 */
-			if(escolha_menu == '1'){
-			insereInicio(&array_listas[ORDEM_LISTA_PESSOA], leEspectador(&array_listas[ORDEM_LISTA_PESSOA]));
-			}			
-			break;
-		case '5':
-			/* opção sair volta ao menu
-			 */
-			menu(array_listas);
-			break;
-
+		break;
+	case '2':
+		/* Criar espectaculos
+		*/
+		if(escolha_menu == '1'){
+			insereInicio(&array_listas[ORDEM_LISTA_ESPECTACULO], leEspectaculo(&array_listas[ORDEM_LISTA_ESPECTACULO]));
 		}
+		if(escolha_menu == '3'){
+			imprime(&array_listas[ORDEM_LISTA_ESPECTACULO], imprimeEspectaculo);
+			system("PAUSE");
+		}
+
+		break;
+	case '3':
+
+		break;
+	case '4':
+		/* menu pesquisa, sub-menu opção sair = 4
+		*/
+		if(escolha_menu == '4' && escolha_sub_menu == '4'){
+			menu(array_listas);
+		}
+		/* Ler espectador
+		*/
+		if(escolha_menu == '1'){
+			insereInicio(&array_listas[ORDEM_LISTA_PESSOA], leEspectador(&array_listas[ORDEM_LISTA_PESSOA]));
+		}	
+
+		/* Imprime Espectadores
+		*/
+		if(escolha_menu == '3'){
+			imprime(&array_listas[ORDEM_LISTA_PESSOA], imprimeEspectador);
+		}
+		system("PAUSE");
+		break;
+	case '5':
+		/* opção sair volta ao menu
+		*/
+		menu(array_listas);
+		break;
+
 	}
+}
 
 
 
@@ -130,8 +135,8 @@ void imprimeMenu(char **vct_menu, int tamanho, int escolha){
 }
 
 /*
- *Imprime estrutura do cabeçalho, recebe apontador para caractere.
- */
+*Imprime estrutura do cabeçalho, recebe apontador para caractere.
+*/
 void imprimeCabecalho(char *str, int numero_caracteres, char limite){
 	char cabecalho_tmp[100] = "\t\t\t\t**CINELUSO**\n\n";
 	strcat(cabecalho_tmp,str);
@@ -143,7 +148,7 @@ void imprimeCabecalho(char *str, int numero_caracteres, char limite){
 }
 
 /* imrime n caracteres passados por parametro
- */
+*/
 void imprimeLimite(int numero_caracteres, char limite){
 	int i;
 	for(i = 0; i < numero_caracteres; i++){

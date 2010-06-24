@@ -4,6 +4,10 @@
 #define MAX_PESSOA 50
 #define MAX_NUM_ID 13
 #define MAX_CONTACTO 40
+#define MAX_NOME_ESPECTACULO 50
+#define MAX_DESC_ESPECTACULO 50
+#define MAX_NOME_SALA 40
+#define MAX_DESC_SALA 50
 #define ORDEM_LISTA_ESPECTACULO 0
 #define ORDEM_LISTA_SALA 1
 #define ORDEM_LISTA_PESSOA 2
@@ -46,6 +50,7 @@ typedef GENERICA *P_GENERICA;
  */
 typedef struct s_cabeca {
 	int id_espectador;
+	int id_espectaculo;
 	P_GENERICA primeiro;		//apontador para o primeiro da lista
 } CABECA;
 typedef CABECA *P_CABECA;
@@ -60,8 +65,8 @@ typedef struct s_id {
 //estrutura tipo de sala
 typedef struct s_sala {
 	int id_sala;		//id da sala, sequencial a partir de 1
-	char *nome_sala;	//apontador para nome da sala
-	char *desc_sala;	//apontador para a descricao da sala
+	char nome_sala[MAX_NOME_SALA];	//apontador para nome da sala
+	char desc_sala[MAX_DESC_SALA];	//apontador para a descricao da sala
 	int filas;			//numero de filas na sala
 	int lugares;		//numero de lugares por fila
 } T_SALA;
@@ -81,8 +86,8 @@ typedef T_DATA *P_DATA;
 //estrutura tipo de espectaculo
 typedef struct s_espectaculo {	
 	int id_espectaculo;			//id do espectaculo, sequencial a partir de 1
-	char *nome_espectaculo;		//apontador para o nome do espectaculo
-	char *desc_espectaculo;		//apontador para a descricao do espectaculo
+	char nome_espectaculo[MAX_NOME_ESPECTACULO];		//apontador para o nome do espectaculo
+	char desc_espectaculo[MAX_DESC_ESPECTACULO];		//apontador para a descricao do espectaculo
 	T_DATA data_inicial;		//data de inicio das exibicoes
 	T_DATA data_final;			//data final das exibicoes
 	E_SESSAO sessao;			//enumerado manha=1, tarde, noite
@@ -143,6 +148,8 @@ void imprimeMenu(char **vct_menu, int tamanho, int escolha);
 void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas);
 void menu(CABECA *array_listas);
 P_PESSOA leEspectador(CABECA *lista_espectador);
+P_ESPECTACULO leEspectaculo(CABECA *lista_espectaculo);
+T_DATA lerData(char *str);
 void leString(char* str, char* txt,int tam);
 float leFloat(char* txt);
 unsigned leUnsigned(char* txt);
@@ -150,4 +157,5 @@ unsigned short leUnsignedShort(char* txt);
 unsigned leEnum(char* txt, unsigned min, unsigned max);
 void insereInicio(CABECA *lista, void  *dados);
 void imprimeEspectador(P_PESSOA espectador);
+void imprimeEspectaculo(P_ESPECTACULO espectaculo);
 void imprime(CABECA *lista, void (*print)());
