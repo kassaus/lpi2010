@@ -42,3 +42,11 @@ P_PESSOA leEspectador(CABECA *lista_espectador){
 	}
 	return novo;
 }
+
+void imprimeEspectador(P_PESSOA espectador){
+	printf("%d\n", espectador->id_pessoa);
+	printf("%s\n", espectador->nome_pessoa);
+	printf("%s\n", espectador->identificacao);
+	printf("%s\n", espectador->contacto);
+	imprimeLimite(80,'-');
+}
