@@ -49,8 +49,9 @@ typedef GENERICA *P_GENERICA;
  * Exibição[4],Ocupação[5].
  */
 typedef struct s_cabeca {
-	int id_espectador;
-	int id_espectaculo;
+	int id_espectador;			// ultimo id do espectador
+	int id_espectaculo;			// ultimo id do espectaculo
+	int id_sala;				// ultimo id da sala
 	P_GENERICA primeiro;		//apontador para o primeiro da lista
 } CABECA;
 typedef CABECA *P_CABECA;
@@ -67,8 +68,8 @@ typedef struct s_sala {
 	int id_sala;		//id da sala, sequencial a partir de 1
 	char nome_sala[MAX_NOME_SALA];	//apontador para nome da sala
 	char desc_sala[MAX_DESC_SALA];	//apontador para a descricao da sala
-	int filas;			//numero de filas na sala
-	int lugares;		//numero de lugares por fila
+	unsigned short filas;			//numero de filas na sala
+	unsigned short lugares;		//numero de lugares por fila
 } T_SALA;
 typedef T_SALA *P_SALA;
 
@@ -149,6 +150,7 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas);
 void menu(CABECA *array_listas);
 P_PESSOA leEspectador(CABECA *lista_espectador);
 P_ESPECTACULO leEspectaculo(CABECA *lista_espectaculo);
+P_SALA leSala(CABECA *lista_sala);
 T_DATA lerData(char *str);
 void leString(char* str, char* txt,int tam);
 float leFloat(char* txt);
@@ -158,4 +160,6 @@ unsigned leEnum(char* txt, unsigned min, unsigned max);
 void insereInicio(CABECA *lista, void  *dados);
 void imprimeEspectador(P_PESSOA espectador);
 void imprimeEspectaculo(P_ESPECTACULO espectaculo);
+void imprimeSala(P_SALA sala);
 void imprime(CABECA *lista, void (*print)());
+P_GENERICA pesquisa(CABECA *lista, void *valor);

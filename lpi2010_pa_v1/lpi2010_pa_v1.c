@@ -23,6 +23,7 @@ int main(int argc, char* argv[])
 	for (i=0; i<LISTAS; i++){
 		array_listas[i].id_espectador = 0;
 		array_listas[i].id_espectaculo = 0;
+		array_listas[i].id_sala = 0;
 		array_listas[i].primeiro = NULL;
 	}	
 

@@ -4,8 +4,8 @@
 #include <stdlib.h>
 
 /* insereInicio recebe ponteiro para a lista correspondente,
- *vai inserir nova estrutura generica em cabeca.primeiro
- */
+*vai inserir nova estrutura generica em cabeca.primeiro
+*/
 void insereInicio(CABECA *lista, void  *dados){
 
 	P_GENERICA item, ptr;
@@ -32,6 +32,9 @@ void insereInicio(CABECA *lista, void  *dados){
 	}
 }
 
+/* Imprime uma lista
+ * recebe um ponteiro para a lista e um ponteiro para função 
+ */
 void imprime(CABECA *lista, void (*print)()){
 	P_GENERICA ptr;
 	for ( ptr =lista->primeiro; ptr ; ptr = ptr->seg){
@@ -50,6 +53,16 @@ T_DATA lerData(char *str){
 	tmp.ano = leUnsignedShort("Insira o ano:");
 	return tmp;
 }
+
+
+
+//P_GENERICA pesquisa(CABECA *lista, void *valor){
+//	P_GENERICA ptr;
+//	for(ptr = lista->primeiro; ptr; ptr->seg){
+//
+//	}
+//}
+
 
 //void idEspectador(CABECA lista_espectador){
 //	P_PESSOA tmp;

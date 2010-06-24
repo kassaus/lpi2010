@@ -3,7 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/* le um espectaculo 
+* recebe ponteiro para a lista de espectaculos
+* solicita ao utilizador todos os dados necessarios ao preenchimento dos campos para um espectaculo
+* retorna um ponteiro para o novo espectaculo.
+*/
 P_ESPECTACULO leEspectaculo(CABECA *lista_espectaculo){
 	P_ESPECTACULO novo;
 	novo = malloc(sizeof(T_ESPECTACULO));

@@ -72,14 +72,30 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 	switch(escolha_sub_menu)
 	{
 	case '1':
+		/* Criar sala
+		*/
+		if(escolha_menu == '1'){
+			insereInicio(&array_listas[ORDEM_LISTA_SALA], leSala(&array_listas[ORDEM_LISTA_SALA]));
+		}
+
+		/* Imprime sala
+		*/
+		if(escolha_menu == '3'){
+			imprime(&array_listas[ORDEM_LISTA_SALA], imprimeSala);
+			system("PAUSE");
+		}
 
 		break;
 	case '2':
-		/* Criar espectaculos
+		/* Criar espectaculo
 		*/
 		if(escolha_menu == '1'){
 			insereInicio(&array_listas[ORDEM_LISTA_ESPECTACULO], leEspectaculo(&array_listas[ORDEM_LISTA_ESPECTACULO]));
+			system("PAUSE");
 		}
+
+		/* Imprime espectaculo
+		*/
 		if(escolha_menu == '3'){
 			imprime(&array_listas[ORDEM_LISTA_ESPECTACULO], imprimeEspectaculo);
 			system("PAUSE");
