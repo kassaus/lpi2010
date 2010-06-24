@@ -37,14 +37,14 @@ typedef struct s_generica {
 	struct s_generica *ant;		//apontador para a estrutura anterior
 	void *dados;				//apontador para a parte de dados, neste caso  a estrutura PALAVRA
 } GENERICA;
-typedef GENERICA *PGENERICA;
+typedef GENERICA *P_GENERICA;
 
 /*estrutura de apontadores para o primeiro elemento das listas Espectaculo[0], Sala[1], Pessoa[2], Reserva[3],
  * Exibição[4],Ocupação[5].
  */
 typedef struct s_cabeca {
 	int id_espectador;
-	PGENERICA primeiro;		//apontador para o primeiro da lista
+	P_GENERICA primeiro;		//apontador para o primeiro da lista
 } CABECA;
 typedef CABECA *P_CABECA;
 
@@ -114,15 +114,8 @@ typedef struct s_lugar {
 
 typedef struct s_reserva {	//estrutura tipo de reserva
 	int id_reserva;			//index da reserva
-
-//	int id_pessoa;
-//	P_PESSOA p_pessoa;
 	T_ID id_pessoa;			//numero de id e ponteiro para pessoa
-	
-//	int id_exibicao;
-//	P_EXIBICAO p_exibicao;
-	T_ID id_exibicao;		//numero de id e ponteiro para exibicao
-	
+	T_ID id_exibicao;		//numero de id e ponteiro para exibicao	
 	T_LUGAR lugar;			//assento no formato fila e cadeira
 } T_RESERVA;
 typedef T_RESERVA *P_RESERVA;
@@ -137,15 +130,6 @@ typedef struct pessoa{
 	T_CONTACTO contacto;	//COntacto do espectador	
 	} T_PESSOA;
 typedef T_PESSOA *P_PESSOA;
-
-
-
-
-
-
-
-
-
 
 
 /*
@@ -163,3 +147,5 @@ unsigned leUnsigned(char* txt);
 unsigned short leUnsignedShort(char* txt);
 unsigned leEnum(char* txt, unsigned min, unsigned max);
 void insereInicio(CABECA *lista, void  *dados);
+void imprimeEspectador(P_PESSOA espectador);
+void imprime(CABECA *lista, void (*print)());

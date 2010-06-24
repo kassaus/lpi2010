@@ -8,7 +8,7 @@
  */
 void insereInicio(CABECA *lista, void  *dados){
 
-	PGENERICA item, ptr;
+	P_GENERICA item, ptr;
 
 	item = malloc(sizeof(GENERICA));
 
@@ -32,11 +32,17 @@ void insereInicio(CABECA *lista, void  *dados){
 	}
 }
 
+void imprime(CABECA *lista, void (*print)()){
+	P_GENERICA ptr;
+	for ( ptr =lista->primeiro; ptr ; ptr = ptr->seg){
+		(*print)();
+	}
+}
+
 //void idEspectador(CABECA lista_espectador){
 //	P_PESSOA tmp;
 //	lista_espectador.primeiro->dados = tmp;
 //
-//	tmp = lista_espectador.primeiro->dados;
 //	if(lista_espectador.primeiro == NULL){
 //		lista_espectador.id_espectador = 1;
 //	} else {
