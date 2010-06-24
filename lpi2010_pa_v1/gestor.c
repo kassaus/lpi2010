@@ -35,7 +35,7 @@ void insereInicio(CABECA *lista, void  *dados){
 void imprime(CABECA *lista, void (*print)()){
 	P_GENERICA ptr;
 	for ( ptr =lista->primeiro; ptr ; ptr = ptr->seg){
-		(*print)();
+		(*print)(ptr->dados);
 	}
 }
 
