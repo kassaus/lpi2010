@@ -39,6 +39,18 @@ void imprime(CABECA *lista, void (*print)()){
 	}
 }
 
+/*
+*Lê data recebe um ponteiro para um array a imprimir no ecrâ, devolve uma data dd-mm-aaaa.
+*/
+T_DATA lerData(char *str){
+	T_DATA tmp;
+	printf(str);
+	tmp.dia = leUnsignedShort("Insira o dia:");
+	tmp.mes = leUnsignedShort("Insira o mes:");
+	tmp.ano = leUnsignedShort("Insira o ano:");
+	return tmp;
+}
+
 //void idEspectador(CABECA lista_espectador){
 //	P_PESSOA tmp;
 //	lista_espectador.primeiro->dados = tmp;

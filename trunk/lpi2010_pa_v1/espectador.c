@@ -5,15 +5,18 @@
 
 
 /* le um espectador 
- * recebe ponteiro para a lista de espectadores
- * solicita ao utilizador todos os dados necessarios ao preenchimento dos campos para um espectador
- * retorna um ponteiro para o novo espectador.
- */
+* recebe ponteiro para a lista de espectadores
+* solicita ao utilizador todos os dados necessarios ao preenchimento dos campos para um espectador
+* retorna um ponteiro para o novo espectador.
+*/
 P_PESSOA leEspectador(CABECA *lista_espectador){
 	P_PESSOA novo;	
 	novo = malloc (sizeof(T_PESSOA));
 	if(!novo){
 		printf("Lamentamos nao foi possivel criar o espectador.");
+		system("PAUSE");
+		return 0;
+
 	} else {
 		++lista_espectador->id_espectador;
 		novo->id_pessoa = lista_espectador->id_espectador;
@@ -48,15 +51,17 @@ P_PESSOA leEspectador(CABECA *lista_espectador){
 }
 
 /* imprime espectador
- * recebe um ponteiro para o espectador
- */
+* recebe um ponteiro para o espectador
+*/
 void imprimeEspectador(P_PESSOA espectador){
 	char *tipos_identificacao[] = {"bi", "cc", "passaporte"};
-	char *tipos_contactos[] = {"email", "telefone"};	
+	char *tipos_contactos[] = {"email", "telefone"};
 
+	printf("\n");
+	imprimeLimite(80,'-');
 	printf("Id-> %d\n", espectador->id_pessoa);
 	printf("Nome-> %s\n", espectador->nome_pessoa);
 	printf("%s-> %s\n", tipos_identificacao[espectador->identificacao.tipo_identificacao - 1], espectador->identificacao.numero);
-	printf("%s-> %s\n", tipos_contactos[espectador->contacto.tipo_contacto - 1], espectador->identificacao.numero);
+	printf("%s-> %s\n", tipos_contactos[espectador->contacto.tipo_contacto - 1], espectador->contacto.contacto);
 	imprimeLimite(80,'-');	
 }
