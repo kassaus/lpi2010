@@ -67,48 +67,117 @@ T_DATA lerData(char *str){
 }
 
 /*
- * ComparaId compara dois numeros recebidos por parametro. Devolve
- * O se forem iguais ou -1 se forem diferentes.
-*/
+ * ComparaId compara dois numeros recebidos por parametro. 
+ * Devolve 1 se forem iguais ou 0 se forem diferentes.
+ */
 int comparaNumero(int num1,int num2 ) {
 	if( num1 == num2 )
 		return 1;
 	return 0;
 }
 
-P_GENERICA comparaIdEspectador(CABECA *lista_espectadores, int valor){
-		P_GENERICA ptr;
-		P_PESSOA dados_pessoa;
-	dados_pessoa = lista_espectadores->primeiro->dados;
-	for(ptr = lista_espectadores->primeiro; ptr; ptr = ptr->seg){
-		if(comparaNumero(dados_pessoa->id_pessoa, valor)){
-			return ptr;
-		}
-	}
-	return NULL;
+/*
+ * ComparaNome compara duas strings recebidas por parametro. 
+ * Devolve 1 se forem iguais ou 0 se forem diferentes.
+ */
+int comparaNome( char *nome1, char *nome2 ) {
+	if(strcmp(nome1, nome2))
+		return 0;
+	return 1;
 }
 
 
-P_GENERICA comparaIdSala(CABECA *lista_sala, int valor){
-	P_GENERICA ptr;
-	P_SALA dados_sala;
-	dados_sala = lista_sala->primeiro->dados;
-	for(ptr = lista_sala->primeiro; ptr; ptr = ptr->seg){
-		if(comparaNumero(dados_sala->id_sala, valor)){
-			return ptr;
-		}
-	}
-	return NULL;
+
+/* Pesquisa em espectaculo
+ *
+ */
+int pesquisaEspectaculoId(P_ESPECTACULO dados, int *valor){	
+	return ( comparaNumero(dados->id_espectaculo , *valor) );
+}
+
+int pesquisaEspectaculoNome(P_ESPECTACULO dados, char *valor){	
+	return ( comparaNome(dados->nome_espectaculo , valor) );
 }
 
 
-P_GENERICA pesquisa(CABECA *lista, P_GENERICA (*compara)(), void *valor, int index){
-	
-	if(index == ORDEM_LISTA_PESSOA)	
-		return (*compara)(lista, valor);	
+/* Pesquisa em Sala
+ *
+ */
+int pesquisaSalaId(P_SALA dados, int *valor){
+	return ( comparaNumero(dados->id_sala , *valor) );
+}
 
-	return NULL;
-	
+
+int pesquisaSalaNome(P_SALA dados, char *valor){	
+	return ( comparaNome(dados->nome_sala , valor) );
+}
+
+
+/* Pesquisa em Pessoa
+ *
+ */
+int pesquisaPessoaId(P_PESSOA dados, int *valor){
+	return ( comparaNumero(dados->id_pessoa , *valor) );
+}
+
+
+int pesquisaPessoaNome(P_PESSOA dados, char *valor){	
+	return ( comparaNome(dados->nome_pessoa , valor) );
+}
+
+/* Pesquisa em Reserva
+ *
+ */
+int pesquisaReservaId(P_RESERVA dados, int *valor){
+	return ( comparaNumero(dados->id_reserva , *valor) );
+}
+
+int pesquisaReservaIdPessoa(P_RESERVA dados, int *valor){
+	return ( comparaNumero(dados->id_pessoa.int_id , *valor) );
+}
+
+int pesquisaReservaIdExibicao(P_RESERVA dados, int *valor){
+	return ( comparaNumero(dados->id_exibicao.int_id , *valor) );
+}
+
+
+/* Pesquisa em Exibicao
+ *
+ */
+int pesquisaExibicaoId(P_EXIBICAO dados, int *valor){
+	return ( comparaNumero(dados->id_exibicao , *valor) );
+}
+
+int pesquisaExibicaoIdEspectaculo(P_EXIBICAO dados, int *valor){
+	return ( comparaNumero(dados->id_espectaculo.int_id , *valor) );
+}
+
+int pesquisaExibicaoIdSala(P_EXIBICAO dados, int *valor){
+	return ( comparaNumero(dados->id_sala.int_id , *valor) );
+}
+
+int pesquisaExibicaoIdOcupacao(P_EXIBICAO dados, int *valor){
+	return ( comparaNumero(dados->id_ocupacao.int_id , *valor) );
+}
+
+/* Pesquisa em Ocupacao
+ *
+ */
+int pesquisaOcupacaoId(P_OCUPACAO dados, int *valor){
+	return ( comparaNumero(dados->id_ocupacao , *valor) );
+}
+
+
+P_GENERICA pesquisa(P_GENERICA primeiro, P_GENERICA (*compara)(), void *valor){
+
+	P_GENERICA ptr, ret=NULL;
+	int i;
+
+	for (ptr= primeiro; ptr; ptr= ptr->seg){
+		if (ret= (*compara)(ptr->dados, valor) ) break;		
+	}
+
+	return ret;		
 }
 
 /*
