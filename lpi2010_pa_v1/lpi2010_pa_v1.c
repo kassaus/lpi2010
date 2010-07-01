@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
 		array_listas[i].id_espectador = 0;
 		array_listas[i].id_espectaculo = 0;
 		array_listas[i].id_sala = 0;
+		array_listas[i].id_reserva = 0;
 		array_listas[i].primeiro = NULL;
 	}	
 
