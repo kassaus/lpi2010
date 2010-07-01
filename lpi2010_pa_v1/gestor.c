@@ -112,7 +112,7 @@ P_GENERICA pesquisa(CABECA *lista, P_GENERICA (*compara)(), void *valor, int ind
 }
 
 /*
-*Imprime estrutura do cabeçalho, recebe apontador para caractere.
+* Imprime estrutura do cabeçalho, recebe apontador para caractere.
 */
 void imprimeCabecalho(char *str, int numero_caracteres, char limite){
 	char cabecalho_tmp[100] = "\t\t\t\t**CINELUSO**\n\n";
