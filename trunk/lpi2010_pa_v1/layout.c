@@ -81,7 +81,7 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 		/* Imprime sala
 		*/
 		if(escolha_menu == '3'){
-			imprime(&array_listas[ORDEM_LISTA_SALA], imprimeSala);
+			imprimeLista(&array_listas[ORDEM_LISTA_SALA], imprimeSala);
 			system("PAUSE");
 		}
 
@@ -97,12 +97,18 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 		/* Imprime espectaculo
 		*/
 		if(escolha_menu == '3'){
-			imprime(&array_listas[ORDEM_LISTA_ESPECTACULO], imprimeEspectaculo);
+			imprimeLista(&array_listas[ORDEM_LISTA_ESPECTACULO], imprimeEspectaculo);
 			system("PAUSE");
 		}
 
 		break;
 	case '3':
+		/* Criar Reserva
+		*/
+		if(escolha_menu == '1'){
+			insereInicio(&array_listas[ORDEM_LISTA_ESPECTACULO], leReserva(array_listas));
+			system("PAUSE");
+		}
 
 		break;
 	case '4':
@@ -120,7 +126,7 @@ void subMenu(int escolha_menu, int escolha_sub_menu, CABECA *array_listas){
 		/* Imprime Espectadores
 		*/
 		if(escolha_menu == '3'){
-			imprime(&array_listas[ORDEM_LISTA_PESSOA], imprimeEspectador);
+			imprimeLista(&array_listas[ORDEM_LISTA_PESSOA], imprimeEspectador);
 		}
 		system("PAUSE");
 		break;
@@ -150,25 +156,3 @@ void imprimeMenu(char **vct_menu, int tamanho, int escolha){
 	printf("%d - Sair\n", indice);
 }
 
-/*
-*Imprime estrutura do cabeçalho, recebe apontador para caractere.
-*/
-void imprimeCabecalho(char *str, int numero_caracteres, char limite){
-	char cabecalho_tmp[100] = "\t\t\t\t**CINELUSO**\n\n";
-	strcat(cabecalho_tmp,str);
-	system("CLS");
-	imprimeLimite(numero_caracteres, limite);
-	printf(cabecalho_tmp);
-	imprimeLimite(numero_caracteres, limite);
-
-}
-
-/* imrime n caracteres passados por parametro
-*/
-void imprimeLimite(int numero_caracteres, char limite){
-	int i;
-	for(i = 0; i < numero_caracteres; i++){
-		printf("%c", limite);
-	}
-
-}

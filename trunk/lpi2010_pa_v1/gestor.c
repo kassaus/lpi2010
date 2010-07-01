@@ -35,10 +35,22 @@ void insereInicio(CABECA *lista, void  *dados){
 /* Imprime uma lista
  * recebe um ponteiro para a lista e um ponteiro para função 
  */
-void imprime(CABECA *lista, void (*print)()){
+void imprimeLista(CABECA *lista, void (*print)()){
 	P_GENERICA ptr;
 	for ( ptr =lista->primeiro; ptr ; ptr = ptr->seg){
 		(*print)(ptr->dados);
+	}
+}
+
+/* Imprime dados por Id
+ 
+ */
+void imprimeEspectadorId(CABECA *lista, int id, void (*print)()){
+	P_GENERICA ptr;
+	for ( ptr =lista->primeiro; ptr ; ptr = ptr->seg){
+		if(pesquisa(lista, comparaIdSala,(int*) id, ORDEM_LISTA_PESSOA)){			
+		(*print)(ptr->dados);
+		}
 	}
 }
 
@@ -54,14 +66,73 @@ T_DATA lerData(char *str){
 	return tmp;
 }
 
+/*
+ * ComparaId compara dois numeros recebidos por parametro. Devolve
+ * O se forem iguais ou -1 se forem diferentes.
+*/
+int comparaNumero(int num1,int num2 ) {
+	if( num1 == num2 )
+		return 1;
+	return 0;
+}
+
+P_GENERICA comparaIdEspectador(CABECA *lista_espectadores, int valor){
+		P_GENERICA ptr;
+		P_PESSOA dados_pessoa;
+	dados_pessoa = lista_espectadores->primeiro->dados;
+	for(ptr = lista_espectadores->primeiro; ptr; ptr = ptr->seg){
+		if(comparaNumero(dados_pessoa->id_pessoa, valor)){
+			return ptr;
+		}
+	}
+	return NULL;
+}
 
 
-//P_GENERICA pesquisa(CABECA *lista, void *valor){
-//	P_GENERICA ptr;
-//	for(ptr = lista->primeiro; ptr; ptr->seg){
-//
-//	}
-//}
+P_GENERICA comparaIdSala(CABECA *lista_sala, int valor){
+	P_GENERICA ptr;
+	P_SALA dados_sala;
+	dados_sala = lista_sala->primeiro->dados;
+	for(ptr = lista_sala->primeiro; ptr; ptr = ptr->seg){
+		if(comparaNumero(dados_sala->id_sala, valor)){
+			return ptr;
+		}
+	}
+	return NULL;
+}
+
+
+P_GENERICA pesquisa(CABECA *lista, P_GENERICA (*compara)(), void *valor, int index){
+	
+	if(index == ORDEM_LISTA_PESSOA)	
+		return (*compara)(lista, valor);	
+
+	return NULL;
+	
+}
+
+/*
+*Imprime estrutura do cabeçalho, recebe apontador para caractere.
+*/
+void imprimeCabecalho(char *str, int numero_caracteres, char limite){
+	char cabecalho_tmp[100] = "\t\t\t\t**CINELUSO**\n\n";
+	strcat(cabecalho_tmp,str);
+	system("CLS");
+	imprimeLimite(numero_caracteres, limite);
+	printf(cabecalho_tmp);
+	imprimeLimite(numero_caracteres, limite);
+
+}
+
+/* imrime n caracteres passados por parametro
+*/
+void imprimeLimite(int numero_caracteres, char limite){
+	int i;
+	for(i = 0; i < numero_caracteres; i++){
+		printf("%c", limite);
+	}
+
+}
 
 
 //void idEspectador(CABECA lista_espectador){

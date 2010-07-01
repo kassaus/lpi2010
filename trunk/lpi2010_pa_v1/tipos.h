@@ -52,6 +52,7 @@ typedef struct s_cabeca {
 	int id_espectador;			// ultimo id do espectador
 	int id_espectaculo;			// ultimo id do espectaculo
 	int id_sala;				// ultimo id da sala
+	int id_reserva;				// ultimo id da reserva
 	P_GENERICA primeiro;		//apontador para o primeiro da lista
 } CABECA;
 typedef CABECA *P_CABECA;
@@ -152,6 +153,7 @@ P_PESSOA leEspectador(CABECA *lista_espectador);
 P_ESPECTACULO leEspectaculo(CABECA *lista_espectaculo);
 P_SALA leSala(CABECA *lista_sala);
 T_DATA lerData(char *str);
+P_RESERVA leReserva(CABECA *lista);
 void leString(char* str, char* txt,int tam);
 float leFloat(char* txt);
 unsigned leUnsigned(char* txt);
@@ -161,5 +163,9 @@ void insereInicio(CABECA *lista, void  *dados);
 void imprimeEspectador(P_PESSOA espectador);
 void imprimeEspectaculo(P_ESPECTACULO espectaculo);
 void imprimeSala(P_SALA sala);
-void imprime(CABECA *lista, void (*print)());
-P_GENERICA pesquisa(CABECA *lista, void *valor);
+void imprimeLista(CABECA *lista, void (*print)());
+void imprimeEspectadorId(CABECA *lista, int id, void (*print)());
+int comparaNumero(int num1,int num2 );
+P_GENERICA pesquisa(CABECA *lista, P_GENERICA (*compara)(), void *valor, int index);
+P_GENERICA comparaIdSala(CABECA *lista_sala, int valor);
+P_GENERICA comparaIdEspectador(CABECA *lista_espectador, int valor);

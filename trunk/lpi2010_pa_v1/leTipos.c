@@ -40,7 +40,7 @@ unsigned leUnsigned(char* txt)
            while(getchar() !='\n');
            printf("Erro! Insira novamente:");    
      }       
-     return num;         
+return num;         
 }
 
 unsigned short leUnsignedShort(char* txt) 
